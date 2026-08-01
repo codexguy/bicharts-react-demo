@@ -1,0 +1,478 @@
+{
+  "columns": [
+    {
+      "name": "City",
+      "dataType": "String",
+      "isMeasure": false,
+      "sortedDirection": "none",
+      "modalShare": 0.047619047619047616,
+      "minGroupCount": 1,
+      "isTemporal": false,
+      "blankCount": 0,
+      "distinctCount": 21,
+      "valueNature": "Categorical",
+      "avgValue": null,
+      "avgLength": 8.095238095238095,
+      "lowValue": null,
+      "highValue": null,
+      "medianValue": null,
+      "numericPrecision": 0,
+      "topCategories": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "formatSignature": "TITLE_CASE_WORDS",
+      "isFreeText": true,
+      "geoKind": "city-name",
+      "geoMatchPct": 90.5,
+      "categoricalPairStats": [
+        {
+          "otherColumn": "Segment",
+          "fillPct": 14,
+          "determinesOther": true,
+          "minCellCount": 1
+        }
+      ],
+      "primaryParentColumn": "Segment",
+      "nestingRatio": 0.33
+    },
+    {
+      "name": "Segment",
+      "dataType": "String",
+      "isMeasure": false,
+      "sortedDirection": "none",
+      "modalShare": 0.23809523809523808,
+      "minGroupCount": 1,
+      "isTemporal": false,
+      "blankCount": 0,
+      "distinctCount": 7,
+      "valueNature": "Categorical",
+      "avgValue": null,
+      "avgLength": 5.666666666666667,
+      "lowValue": null,
+      "highValue": null,
+      "medianValue": null,
+      "numericPrecision": 0,
+      "topCategories": [
+        5,
+        5,
+        3,
+        3,
+        3,
+        1,
+        1
+      ],
+      "formatSignature": "TITLE_CASE_WORDS",
+      "isFreeText": true,
+      "categoricalPairStats": [
+        {
+          "otherColumn": "City",
+          "fillPct": 14,
+          "determinesOther": false,
+          "minCellCount": 1
+        }
+      ]
+    },
+    {
+      "name": "Latitude",
+      "dataType": "Decimal",
+      "isMeasure": true,
+      "sortedDirection": "none",
+      "isTemporal": false,
+      "blankCount": 1,
+      "distinctCount": 21,
+      "valueNature": "Continuous",
+      "avgValue": 34.162885,
+      "avgLength": 6.9,
+      "lowValue": 8.9824,
+      "highValue": 61.2181,
+      "medianValue": 33.9006,
+      "numericPrecision": 4,
+      "skewness": 0.014106136255321786,
+      "stdDev": 12.586168357179838,
+      "sum": 683.2577,
+      "topCategories": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "quantiles": {
+        "p05": 8.9824,
+        "p25": 21.3069,
+        "p75": 42.3601,
+        "p95": 49.2827
+      },
+      "additivity": "unknown",
+      "relativeDispersion": 0.863,
+      "groupDiscrimination": [
+        {
+          "otherColumn": "City",
+          "eta2": 1
+        },
+        {
+          "otherColumn": "Segment",
+          "eta2": 0.5376
+        }
+      ]
+    },
+    {
+      "name": "Longitude",
+      "dataType": "Decimal",
+      "isMeasure": true,
+      "sortedDirection": "none",
+      "isTemporal": false,
+      "blankCount": 1,
+      "distinctCount": 21,
+      "valueNature": "Continuous",
+      "avgValue": -99.12694000000002,
+      "avgLength": 8.3,
+      "lowValue": -157.8583,
+      "highValue": -66.1057,
+      "medianValue": -97.2515,
+      "numericPrecision": 4,
+      "skewness": -0.8166511399237035,
+      "stdDev": 24.88682777497767,
+      "sum": -1982.5388000000003,
+      "topCategories": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "quantiles": {
+        "p05": -157.8583,
+        "p25": -118.2437,
+        "p75": -79.5199,
+        "p95": -71.0589
+      },
+      "additivity": "unknown",
+      "relativeDispersion": 0.77,
+      "groupDiscrimination": [
+        {
+          "otherColumn": "City",
+          "eta2": 1
+        },
+        {
+          "otherColumn": "Segment",
+          "eta2": 0.7168
+        }
+      ]
+    },
+    {
+      "name": "Population",
+      "dataType": "Integer",
+      "isMeasure": true,
+      "sortedDirection": "none",
+      "isTemporal": false,
+      "blankCount": 0,
+      "distinctCount": 21,
+      "valueNature": "Continuous",
+      "avgValue": 1959762,
+      "avgLength": 6.476190476190476,
+      "lowValue": 100000,
+      "highValue": 9200000,
+      "medianValue": 880000,
+      "numericPrecision": 0,
+      "skewness": 2.0631789238972447,
+      "stdDev": 2426883.890815781,
+      "sum": 41155000,
+      "topCategories": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "quantiles": {
+        "p05": 290000,
+        "p25": 500000,
+        "p75": 2300000,
+        "p95": 8400000
+      },
+      "additivity": "unknown",
+      "relativeDispersion": 4.068,
+      "groupDiscrimination": [
+        {
+          "otherColumn": "City",
+          "eta2": 1
+        },
+        {
+          "otherColumn": "Segment",
+          "eta2": 0.1482
+        }
+      ]
+    },
+    {
+      "name": "Revenue",
+      "dataType": "Integer",
+      "isMeasure": true,
+      "sortedDirection": "none",
+      "isTemporal": false,
+      "blankCount": 0,
+      "distinctCount": 21,
+      "valueNature": "Continuous",
+      "avgValue": 401762,
+      "avgLength": 5.857142857142857,
+      "lowValue": 10000,
+      "highValue": 952000,
+      "medianValue": 352000,
+      "numericPrecision": 0,
+      "skewness": 0.4366216626786482,
+      "stdDev": 246803.16135236964,
+      "sum": 8437000,
+      "topCategories": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "quantiles": {
+        "p05": 88000,
+        "p25": 231000,
+        "p75": 512000,
+        "p95": 829000
+      },
+      "additivity": "unknown",
+      "relativeDispersion": 1.773,
+      "groupDiscrimination": [
+        {
+          "otherColumn": "City",
+          "eta2": 1
+        },
+        {
+          "otherColumn": "Segment",
+          "eta2": 0.2432
+        }
+      ]
+    },
+    {
+      "name": "__rowIdx__",
+      "dataType": "Integer",
+      "isMeasure": false,
+      "modelDesc": ""
+    }
+  ],
+  "rows": [
+    [
+      "New York",
+      "East",
+      40.7128,
+      -74.006,
+      8400000,
+      952000,
+      0
+    ],
+    [
+      "Los Angeles",
+      "West",
+      34.0522,
+      -118.2437,
+      3900000,
+      721000,
+      1
+    ],
+    [
+      "Chicago",
+      "Central",
+      41.8781,
+      -87.6298,
+      2700000,
+      644000,
+      2
+    ],
+    [
+      "Houston",
+      "Central",
+      29.7604,
+      -95.3698,
+      2300000,
+      512000,
+      3
+    ],
+    [
+      "Phoenix",
+      "West",
+      33.4484,
+      -112.074,
+      1600000,
+      301000,
+      4
+    ],
+    [
+      "Toronto",
+      "Canada",
+      43.6532,
+      -79.3832,
+      2930000,
+      608000,
+      5
+    ],
+    [
+      "Montreal",
+      "Canada",
+      45.5019,
+      -73.5674,
+      1760000,
+      342000,
+      6
+    ],
+    [
+      "Vancouver",
+      "Canada",
+      49.2827,
+      -123.1207,
+      675000,
+      338000,
+      7
+    ],
+    [
+      "Mexico City",
+      "Mexico",
+      19.4326,
+      -99.1332,
+      9200000,
+      829000,
+      8
+    ],
+    [
+      "Monterrey",
+      "Mexico",
+      25.6866,
+      -100.3161,
+      1140000,
+      264000,
+      9
+    ],
+    [
+      "Guadalajara",
+      "Mexico",
+      20.6597,
+      -103.3496,
+      1500000,
+      231000,
+      10
+    ],
+    [
+      "Miami",
+      "East",
+      25.7617,
+      -80.1918,
+      460000,
+      509000,
+      11
+    ],
+    [
+      "Seattle",
+      "West",
+      47.6062,
+      -122.3321,
+      750000,
+      488000,
+      12
+    ],
+    [
+      "Denver",
+      "Central",
+      39.7392,
+      -104.9903,
+      715000,
+      352000,
+      13
+    ],
+    [
+      "Atlanta",
+      "East",
+      33.749,
+      -84.388,
+      500000,
+      401000,
+      14
+    ],
+    [
+      "Boston",
+      "East",
+      42.3601,
+      -71.0589,
+      690000,
+      477000,
+      15
+    ],
+    [
+      "Anchorage",
+      "West",
+      61.2181,
+      -149.9003,
+      290000,
+      88000,
+      16
+    ],
+    [
+      "Honolulu",
+      "West",
+      21.3069,
+      -157.8583,
+      345000,
+      132000,
+      17
+    ],
+    [
+      "San Juan",
+      "East",
+      18.4655,
+      -66.1057,
+      320000,
+      97000,
+      18
+    ],
+    [
+      "Panama City",
+      "Central America",
+      8.9824,
+      -79.5199,
+      880000,
+      141000,
+      19
+    ],
+    [
+      "Atlantis",
+      "Mystery",
+      null,
+      null,
+      100000,
+      10000,
+      20
+    ]
+  ]
+}

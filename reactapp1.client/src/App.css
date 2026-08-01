@@ -1,0 +1,77 @@
+#root {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.bic-demo {
+    text-align: left;
+}
+
+/* The Vite template ships h1 at 56px with tight letter-spacing and no line-height of its
+   own, which collides with the lede paragraph. Pin both here. */
+.bic-demo header h1 {
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    margin: 8px 0 12px;
+}
+
+.bic-demo header p {
+    color: #555;
+    max-width: 68ch;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+    padding: 0.75rem 1rem;
+    background: #f5f6f8;
+    border-radius: 6px;
+}
+
+.controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.controls .hint {
+    color: #666;
+    font-size: 0.85rem;
+    flex: 1 1 20ch;
+}
+
+.chart-block {
+    margin: 2rem 0;
+}
+
+.chart-block h2 {
+    margin-bottom: 0.1rem;
+}
+
+.chart-block .sub {
+    margin-top: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* The chart owns everything inside this element — never render React children into it. */
+.chart {
+    width: 900px;
+    max-width: 100%;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.bic-demo footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e3e3e3;
+    color: #666;
+    font-size: 0.85rem;
+}
