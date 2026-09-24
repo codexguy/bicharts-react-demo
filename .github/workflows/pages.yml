@@ -1,0 +1,52 @@
+# Builds the React demo and publishes it to GitHub Pages.
+#
+# The page is static: both charts are committed source under reactapp1.client/src/charts/, and
+# the data is a CSV bundled into the build. Nothing here needs a secret, and the published page
+# makes no call to any charting service - it runs on d3 and @bicharts/chart-host alone.
+name: Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: reactapp1.client
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: reactapp1.client/package-lock.json
+      - run: npm ci
+      - name: Build for the project-site path
+        run: npm run build
+        env:
+          DEMO_BASE: /${{ github.event.repository.name }}/
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: reactapp1.client/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

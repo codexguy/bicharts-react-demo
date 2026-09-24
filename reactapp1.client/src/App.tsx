@@ -11,12 +11,26 @@
 // At RUN time there is no BIC dependency at all: no API key, no network call, no per-render
 // cost. The charts are committed source; see src/charts/index.ts for their provenance.
 import { useMemo, useState } from 'react';
-import * as d3 from 'd3';
+import * as d3base from 'd3';
+import * as d3Sankey from 'd3-sankey';
+import * as d3Hexbin from 'd3-hexbin';
+// Plugins outside d3 v7 core. The visual CDN-loads these and the Excel add-in bundles
+// them; without them a Sankey or hexbin chart dies on 'd3.sankey is not a function'.
+// A spread also makes the result EXTENSIBLE - a module namespace is frozen, and a
+// generated chart installs its own d3.llm* helpers onto whatever d3 it is handed.
+//
+// MERMAID IS DELIBERATELY NOT HERE. A Mermaid diagram needs the library on this same object
+// (`Object.assign(d3, { mermaid })` after `import mermaid from 'mermaid'`), but it is about a
+// megabyte and none of this app's committed charts is a diagram, so importing it would be a
+// download nothing uses. The general mechanism is the point rather than this list: call
+// `requiredD3Plugins(code)` from @bicharts/chart-host and it names every package a given
+// chart needs BEFORE the chart runs, which is how a real consumer decides what to install.
+const d3 = { ...d3base, ...d3Sankey, ...d3Hexbin };
 import { ingest } from '@bicharts/shape-core/ingest';
 import { BicChart, BicChartGroup, useBicSelection } from '@bicharts/chart-host/react';
 import { naBubblesCode, cityTableCode, naBubblesGeo } from './charts';
-// The app owns its own data, exactly as a real consumer would — this is a copy of
-// testharness/datasets/na_city_metrics.csv, the same file the charts were generated from.
+// The app owns its own data, exactly as a real consumer would — this is a copy of the
+// 42-row city-metrics CSV the charts were generated from.
 import cityCsv from './data/na_city_metrics.csv?raw';
 import './App.css';
 
@@ -42,8 +56,9 @@ function useCityData() {
 }
 
 // The toolbar lives INSIDE the group so it can read and clear the shared selection.
-function Toolbar({ maxMapPoints, setMaxMapPoints }:
-                 { maxMapPoints: number; setMaxMapPoints: (n: number) => void }) {
+function Toolbar({ maxMapPoints, setMaxMapPoints, labelContrast, setLabelContrast }:
+                 { maxMapPoints: number; setMaxMapPoints: (n: number) => void;
+                   labelContrast: boolean; setLabelContrast: (on: boolean) => void }) {
     const sel = useBicSelection();
     return (
         <section className="controls">
@@ -58,6 +73,16 @@ function Toolbar({ maxMapPoints, setMaxMapPoints }:
                 Live restyle — the chart re-renders and annotates the truncation itself.
                 Nothing is regenerated.
             </span>
+            {/* The visual's label-contrast fail-safe, shared: chart-host runs it after every
+                render (on by default). A page that owns its label colours turns it off here;
+                the prop is the same switch the Excel add-in and the Power BI visual expose. */}
+            <label>
+                <input
+                    type="checkbox" checked={labelContrast}
+                    onChange={e => setLabelContrast(e.target.checked)}
+                />
+                {' '}Fix hard-to-read labels
+            </label>
             <button onClick={sel.clear} disabled={!sel.rows.length}>
                 {sel.rows.length ? `Clear selection (${sel.rows.length})` : 'Clear selection'}
             </button>
@@ -82,6 +107,10 @@ function Caption({ me, idle }: { me: string; idle: string }) {
 export default function App() {
     const { rows, columns } = useCityData();
     const [maxMapPoints, setMaxMapPoints] = useState(1000);
+    // On by default, as in every host. A prop, not an option: it governs a pass the host runs
+    // AFTER a render, so flipping it tears the host down and rebuilds (code identity is
+    // unchanged; only the config is) - a checkbox, not a live restyle.
+    const [labelContrast, setLabelContrast] = useState(true);
 
     // Options are PLAIN DATA. Changing them calls setOptions() on the live host — a
     // repaint, never a recompile and never a regeneration.
@@ -110,7 +139,8 @@ export default function App() {
             </header>
 
             <BicChartGroup rows={rows} columns={columns}>
-                <Toolbar maxMapPoints={maxMapPoints} setMaxMapPoints={setMaxMapPoints} />
+                <Toolbar maxMapPoints={maxMapPoints} setMaxMapPoints={setMaxMapPoints}
+                         labelContrast={labelContrast} setLabelContrast={setLabelContrast} />
 
                 <section className="chart-block">
                     <h2>North America (Bubbles)</h2>
@@ -120,6 +150,7 @@ export default function App() {
                         code={naBubblesCode}
                         d3={d3}
                         options={{ ...mapOptions, geo: naBubblesGeo }}
+                        labelContrast={labelContrast}
                         className="chart"
                     />
                 </section>
@@ -132,6 +163,7 @@ export default function App() {
                         code={cityTableCode}
                         d3={d3}
                         options={tableOptions}
+                        labelContrast={labelContrast}
                         className="chart"
                     />
                 </section>

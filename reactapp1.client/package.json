@@ -10,14 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@bicharts/chart-host": "^0.5.33",
-    "@bicharts/shape-core": "^0.5.33",
+    "@bicharts/chart-host": "^0.5.122",
+    "@bicharts/shape-core": "^0.5.122",
     "@types/d3": "^7.4.3",
     "d3": "^7.9.0",
+    "d3-hexbin": "^0.2.2",
+    "d3-sankey": "^0.12.3",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
+    "@types/d3-hexbin": "^0.2.5",
+    "@types/d3-sankey": "^0.12.5",
     "@types/node": "^24.13.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
