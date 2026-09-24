@@ -17,7 +17,7 @@ call, needs no API key, costs nothing per render, and works offline.
 | Node | ≥ 20 (24 is what CI uses) |
 | An MCP-capable client | Claude Code, Claude Desktop, Cursor, … |
 | A BIC **trial or paid** account | MCP access has no freemium tier — `generate_chart` will refuse |
-| Credits | `generate_chart` bills credits per chart (current rates are shown in your account); `assess_data_shape` and `list_eligible_charts` are free |
+| Credits | `generate_chart` bills credits per chart (current rates are shown in your account); `assess_data_shape` runs locally and is free; `list_eligible_charts` needs the same account, and is free within an allowance and metered beyond it |
 
 ---
 
