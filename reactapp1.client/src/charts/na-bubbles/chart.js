@@ -183,7 +183,7 @@ function render(container, data, options) {
     noteY -= sz + 3;
   };
   if (droppedForCap > 0) note('Showing largest ' + fmt.format(mapCap) + ' of ' + fmt.format(mapCap + droppedForCap) +
-    ' points \u2014 raise Max Map Points (Format > Data) to see more', CF);
+    ' points \u2014 raise the map-point cap to see more', CF);
   if (offMap > 0) note(offMap + (offMap === 1 ? ' point off-map' : ' points off-map'), CF);
   if (noSize > 0) note(noSize + (noSize === 1 ? ' row omitted (no Revenue value)' : ' rows omitted (no Revenue value)'), CF - 1);
 
