@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@bicharts/chart-host": "^0.6.36",
-    "@bicharts/shape-core": "^0.6.36",
+    "@bicharts/chart-host": "^0.6.37",
+    "@bicharts/shape-core": "^0.6.37",
     "@types/d3": "^7.4.3",
     "d3": "^7.9.0",
     "d3-hexbin": "^0.2.2",
