@@ -144,7 +144,9 @@ function render(container, data, options) {
   }
   updateHeaderGlyphs();
 
-  const bodyOuter = root.append('div')
+  // The rows scroll here, in the table frame's class: the host keeps a table's own scroll across a redraw of the
+  // same chart by finding the element with this class, as it does for every table drawn by the engine's frame.
+  const bodyOuter = root.append('div').attr('class', 'lch-table-body')
     .style('height', bodyH + 'px').style('overflow-y', 'auto').style('overflow-x', 'hidden')
     .style('scrollbar-gutter', 'stable').style('padding', '0 ' + padX + 'px');
 
